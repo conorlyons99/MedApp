@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Welcome</div>
+                <div class="card-header">About</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -14,11 +14,7 @@
                         </div>
                     @endif
 
-                    Welcome to the MedApp ⚕️
-                    <br>
-                    <br>
-
-                    Read more in the <a href="{{route('about')}}">about</a> section
+                    This is the about page
                 </div>
             </div>
         </div>
