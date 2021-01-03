@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+  @include('inc.navbar')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -15,6 +16,10 @@
                     @endif
 
                     {{ __('You are logged in as a Patient!') }}
+
+                </div>
+                <div class="card-body">
+                  Click <a href="{{route('patient.visits.index')}}">here</a> to view your Appointments
                 </div>
             </div>
         </div>

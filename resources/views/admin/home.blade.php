@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+    @include('inc.navbar')
+
+<div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -15,6 +17,12 @@
                     @endif
 
                     {{ __('You are logged in as an Administrator!') }}
+                    <br>
+                    <a href="{{route('admin.visits.index')}}">Visits</a>
+                    <br>
+                    <a href="{{route('admin.doctors.index')}}">Doctors</a>
+                    <br>
+                    <a href="{{route('admin.patients.index')}}">Patients</a>
                 </div>
             </div>
         </div>
