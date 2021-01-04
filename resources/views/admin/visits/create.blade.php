@@ -26,8 +26,12 @@
               <input type="text" class="form-control" id="patientName" name="patientName" value="{{old('patientName')}}"/>
             </div>
             <div class="form-group">
-              <label for="doctorName">Doctor Name</label>
-              <input type="text" class="form-control" id="doctorName" name="doctorName" value="{{old('doctorName')}}"/>
+              <label for="doctorName">Doctor</label>
+              <select name="doctor_id" class="form-control">
+                @foreach ($doctors as $doctor)
+                  <option value="{{$doctor->id}}"{{ (old('doctor_id') == $doctor->id) ? "selected" : "" }}>{{$doctor->lastName}}</option>
+                @endforeach
+              </select>
             </div>
             <div class="form-group">
               <label for="dateTime">Time and Date</label>

@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-16T23:52:08+00:00
-# @Last modified time: 2020-11-17T02:31:19+00:00
+# @Last modified time: 2021-01-04T13:56:06+00:00
 
 
 
@@ -31,8 +31,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // $user = Auth::user();
-        // $user->authorizeRoles('admin');
+
 
         return view('admin.home');
     }

@@ -8,14 +8,14 @@
 
         <div class="card">
           <div class="card-header">
-            Visits
+            Appointments
             <a href="{{route('admin.visits.create')}}" class="btn btn-primary float-right">Add</a>
-            <a href="{{route('admin.home')}}" class="btn btn-primary float-right">Back</a>
+
           </div>
 
           <div class="card-body">
             @if (count($visits) ===0)
-              <p>No Visits</p>
+              <p>No Appointments</p>
             @else
               <table id="table-visits" class="table table-hover">
                 <thead>
@@ -27,7 +27,7 @@
               @foreach ($visits as $visit)
                       <tr data-id="{{$visit->id}}">
                         <td>{{$visit->patientName}}</td>
-                        <td>{{$visit->doctorName}}</td>
+                        <td>Dr.{{$visit->doctor->lastName}}</td>
                         <td>{{$visit->dateTime}}</td>
                         <td>
                           <a href="{{route('admin.visits.show', $visit->id)}}" class="btn btn-primary">View</a>
@@ -42,6 +42,7 @@
               @endforeach
                 </tbody>
               </table>
+              <a href="{{route('admin.home')}}" class="btn btn-primary">Back</a>
             @endif
           </div>
         </div>

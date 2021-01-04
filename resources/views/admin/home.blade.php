@@ -16,7 +16,7 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in as an Administrator!') }}
+                    <h4>Welcome back <span>{{ Auth::user()->name }}</span></h4>
                     <br>
                     <a href="{{route('admin.visits.index')}}">Visits</a>
                     <br>

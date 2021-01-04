@@ -6,7 +6,7 @@
     <div class="col-md-8 col-md-offset-2">
       <div class="card">
         <div class="card-header">
-            Visit: {{$visit->patientName}}
+            Patient: {{$visit->patientName}}
         </div>
 
         <div class="card-body">
@@ -14,7 +14,7 @@
             <tbody>
               <tr>
                 <td>Doctors Name</td>
-                <td>{{$visit->doctorName}}</td>
+                <td>Dr.{{$visit->doctor->lastName}}</td>
               </tr>
               <tr>
                 <td>Time and Date</td>
