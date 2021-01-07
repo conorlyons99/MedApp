@@ -23,16 +23,16 @@
             <input type="hidden" name="_token" value="{{csrf_token()}}">
             <input type="hidden" name="_method" value="PUT">
             <div class="form-group">
-              <label for="firstName">First Name</label>
-              <input type="text" class="form-control" id="firstName" name="firstName" value="{{old('firstName', $patient->firstName)}}"/>
+              <label for="name">Name</label>
+              <input type="text" class="form-control" id="name" name="name" value="{{old('name', $user->name)}}"/>
             </div>
             <div class="form-group">
-              <label for="lastName">Last Name</label>
-              <input type="text" class="form-control" id="lastName" name="lastName" value="{{old('lastName', $patient->lastName)}}"/>
+              <label for="em">Email</label>
+              <input type="text" class="form-control" id="email" name="email" value="{{old('email', $user->email)}}"/>
             </div>
             <div class="form-group">
-              <label for="email">Email</label>
-              <input type="text" class="form-control" id="email" name="email" value="{{old('email', $patient->email)}}"/>
+              <label for="address">Address</label>
+              <input type="text" class="form-control" id="address" name="address" value="{{old('address', $patient->address)}}"/>
             </div>
             <div class="form-group">
               <label for="phone">Phone No.</label>

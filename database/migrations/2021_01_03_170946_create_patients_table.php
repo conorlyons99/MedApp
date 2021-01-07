@@ -1,6 +1,6 @@
 <?php
 # @Date:   2021-01-03T17:09:50+00:00
-# @Last modified time: 2021-01-04T14:00:21+00:00
+# @Last modified time: 2021-01-05T12:08:00+00:00
 
 
 
@@ -20,11 +20,12 @@ class CreatePatientsTable extends Migration
     {
         Schema::create('patients', function (Blueprint $table) {
           $table->id();
-          $table->string('firstName');
-          $table->string('lastName');
-          $table->string('email');
-          $table->string('phone');
+          $table->string('address', 100);
+          $table->string('phone', 20);
+          $table->unsignedBigInteger('user_id');
           $table->timestamps();
+
+          $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

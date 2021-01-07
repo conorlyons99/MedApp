@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-16T22:05:53+00:00
-# @Last modified time: 2020-11-16T23:32:47+00:00
+# @Last modified time: 2021-01-05T12:20:32+00:00
 
 
 
@@ -22,8 +22,7 @@ class UserSeeder extends Seeder
     public function run()
     {
         $role_admin = Role::where('name', 'admin')->first();
-        $role_doctor = Role::where('name', 'doctor')->first();
-        $role_patient = Role::where('name', 'patient')->first();
+        $role_user = Role::where('name', 'user')->first();
 
         $admin = new User();
         $admin->name = 'Conor Lyons';
@@ -32,18 +31,38 @@ class UserSeeder extends Seeder
         $admin->save();
         $admin->roles()->attach($role_admin);
 
-        $doctor = new User();
-        $doctor->name = 'Alan Smith';
-        $doctor->email = 'doctor@test.info';
-        $doctor->password = Hash::make('secret');
-        $doctor->save();
-        $doctor->roles()->attach($role_doctor);
-
         $patient = new User();
         $patient->name = 'Johnny Dogs';
         $patient->email = 'jdogs@test.info';
         $patient->password = Hash::make('secret');
         $patient->save();
-        $patient->roles()->attach($role_patient);
+        $patient->roles()->attach($role_user);
+
+        // $patient = new Patient();
+        // $patient->address = '21 Fake Ln, Dublin 4';
+        // $patient->phone = '012345678'
+        // $patient->user_id = $user->id;
+        // $patient->save();
+
+        $patient = new User();
+        $patient->name = 'Chris Kamara';
+        $patient->email = 'ckam@test.info';
+        $patient->password = Hash::make('secret');
+        $patient->save();
+        $patient->roles()->attach($role_user);
+
+        $patient = new User();
+        $patient->name = 'Peter Hansen';
+        $patient->email = 'phansen@test.info';
+        $patient->password = Hash::make('secret');
+        $patient->save();
+        $patient->roles()->attach($role_user);
+
+        $patient = new User();
+        $patient->name = 'Ellen Dunne';
+        $patient->email = 'edunne@test.info';
+        $patient->password = Hash::make('secret');
+        $patient->save();
+        $patient->roles()->attach($role_user);
     }
 }

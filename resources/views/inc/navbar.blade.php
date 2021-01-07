@@ -13,10 +13,12 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
 
+
             </ul>
 
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ml-auto">
+              </a>
                 <!-- Authentication Links -->
                 @guest
                   @if (Route::has('login'))
@@ -32,23 +34,13 @@
                   @endif
               @else
                   <li class="nav-item dropdown">
-                          {{-- {{ Auth::user()->name }}
-                          <span class="caret"></span> --}}
+
+                            {{ Auth::user()->name }}
+                          <span class="caret"></span>
 
                       <div class="" aria-labelledby="navbarDropdown">
 
-                          @if (Auth::user()->hasRole('admin'))
 
-                              <a class="nav-item d-md-none" href="{{ route('admin.visits.index') }}">
-                                  Visits
-                              </a>
-                              <a class="nav-item d-md-none" href="{{ route('admin.doctors.index') }}">
-                                  Doctors
-                              </a>
-                              <a class="nav-item d-md-none" href="{{ route('admin.patients.index') }}">
-                                  Patients
-                              </a>
-                          @endif
                           <a class="dropdown-item" href="{{ route('logout') }}"
                               onclick="event.preventDefault();
                                                                                                                                                                                                                                                                                                document.getElementById('logout-form').submit();">

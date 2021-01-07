@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-16T14:46:15+00:00
-# @Last modified time: 2020-11-17T02:23:36+00:00
+# @Last modified time: 2021-01-05T15:43:17+00:00
 
 
 
@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, Notifiable;
 
@@ -46,7 +46,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function visits(){
+      return $this->hasMany('App\Models\Visits', 'user_id');
+    }
 
+    public function patient(){
+      return $this->hasOne('App\Models\Patient');
+    }
 
     public function roles(){
       return $this->belongsToMany('App\Models\Role', 'user_role');

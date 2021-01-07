@@ -13,22 +13,21 @@
           <table class="table table-hover">
             <tbody>
               <tr>
-                <td>First Name</td>
-                <td>{{$patient->firstName}}</td>
+                <td>Name</td>
+                <td>{{$patient->user->name}}</td>
               </tr>
-              <tr>
-                <tr>
-                  <td>Last Name</td>
-                  <td>{{$patient->lastName}}</td>
-                </tr>
                 <tr>
                 <td>Email</td>
-                <td>{{$patient->email}}</td>
+                <td>{{$patient->user->email}}</td>
               </tr>
               <tr>
               <td>Phone No.</td>
               <td>{{$patient->phone}}</td>
             </tr>
+            <tr>
+            <td>Address</td>
+            <td>{{$patient->address}}</td>
+          </tr>
             </tbody>
           </table>
           <a href="{{route('admin.patients.index') }}" class="btn btn-default">Back</a>

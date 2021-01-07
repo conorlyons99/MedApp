@@ -10,7 +10,6 @@
           <div class="card-header">
             Patients
             <a href="{{route('admin.patients.create')}}" class="btn btn-primary float-right">Add</a>
-            <a href="{{route('admin.home')}}" class="btn btn-primary float-right">Back</a>
           </div>
 
           <div class="card-body">
@@ -19,18 +18,20 @@
             @else
               <table id="table-patients" class="table table-hover">
                 <thead>
-                  <th>First Name</th>
-                  <th>Last Name</th>
+                  <th>Name</th>
                   <th>Email</th>
                   <th>Phone No</th>
+                  <th>Address</th>
+
+                  </address>
                 </thead>
                 <tbody>
               @foreach ($patient as $patient)
                       <tr data-id="{{$patient->id}}">
-                        <td>{{$patient->firstName}}</td>
-                        <td>{{$patient->lastName}}</td>
-                        <td>{{$patient->email}}</td>
+                        <td>{{$patient->user->name}}</td>
+                        <td>{{$patient->user->email}}</td>
                         <td>{{$patient->phone}}</td>
+                        <td>{{$patient->address}}</td>
                         <td>
                           <a href="{{route('admin.patients.show', $patient->id)}}" class="btn btn-primary">View</a>
                           <a href="{{route('admin.patients.edit', $patient->id)}}" class="btn btn-warning">Edit</a>
@@ -44,7 +45,9 @@
               @endforeach
                 </tbody>
               </table>
+
             @endif
+            <a href="{{route('admin.home')}}" class="btn btn-primary">Back</a>
           </div>
         </div>
     </div>

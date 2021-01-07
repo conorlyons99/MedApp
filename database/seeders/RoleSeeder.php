@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-16T22:05:26+00:00
-# @Last modified time: 2020-11-16T22:17:30+00:00
+# @Last modified time: 2021-01-05T13:03:32+00:00
 
 
 
@@ -30,8 +30,8 @@ class RoleSeeder extends Seeder
         $role_doctor->save();
 
         $role_patient = new Role();
-        $role_patient->name = 'patient';
-        $role_patient->description = 'A Hospital Patient';
+        $role_patient->name = 'user';
+        $role_patient->description = 'A Hospital User';
         $role_patient->save();
     }
 }

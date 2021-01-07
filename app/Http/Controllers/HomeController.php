@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-16T23:42:27+00:00
-# @Last modified time: 2020-11-17T01:41:34+00:00
+# @Last modified time: 2021-01-05T13:48:28+00:00
 
 
 
@@ -38,7 +38,7 @@ class HomeController extends Controller
         else if($user->hasRole('doctor')){
           $home = 'doctor.home';
         }
-        else if($user->hasRole('patient')){
+        else if($user->hasRole('user')){
           $home = 'patient.home';
         }
         return redirect()->route($home);

@@ -22,20 +22,20 @@
           <form method="POST" action="{{route('admin.patients.store')}}">
             <input type="hidden" name="_token" value="{{csrf_token()}}">
             <div class="form-group">
-              <label for="firstName">First Name</label>
-              <input type="text" class="form-control" id="firstName" name="firstName" value="{{old('firstName')}}"/>
+              <label for="name">Name</label>
+              <input type="text" class="form-control" id="name" name="name" value="{{old('name')}}"/>
             </div>
             <div class="form-group">
-              <label for="lastName">Last Name</label>
-              <input type="text" class="form-control" id="lastName" name="lastName" value="{{old('lastName')}}"/>
-            </div>
-            <div class="form-group">
-              <label for="email">email</label>
+              <label for="email">Email</label>
               <input type="text" class="form-control" id="email" name="email" value="{{old('email')}}"/>
             </div>
             <div class="form-group">
               <label for="phone">Phone</label>
               <input type="text" class="form-control" id="phone" name="phone" value="{{old('phone')}}"/>
+            </div>
+            <div class="form-group">
+              <label for="address">Address</label>
+              <input type="text" class="form-control" id="address" name="address" value="{{old('address')}}"/>
             </div>
             <div class="float-right">
               <a href="{{route ('admin.patients.index')}}" class="btn btn-default">Cancel</a>

@@ -26,7 +26,7 @@
                 <tbody>
               @foreach ($visits as $visit)
                       <tr data-id="{{$visit->id}}">
-                        <td>{{$visit->patientName}}</td>
+                        <td>{{$visit->user->name}}</td>
                         <td>Dr.{{$visit->doctor->lastName}}</td>
                         <td>{{$visit->dateTime}}</td>
                         <td>
@@ -42,8 +42,9 @@
               @endforeach
                 </tbody>
               </table>
-              <a href="{{route('admin.home')}}" class="btn btn-primary">Back</a>
+
             @endif
+            <a href="{{route('admin.home')}}" class="btn btn-primary">Back</a>
           </div>
         </div>
     </div>

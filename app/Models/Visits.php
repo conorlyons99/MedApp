@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-26T12:52:52+00:00
-# @Last modified time: 2021-01-04T12:11:21+00:00
+# @Last modified time: 2021-01-05T15:52:05+00:00
 
 
 
@@ -17,4 +17,9 @@ class Visits extends Model
     public function doctor(){
       return $this->belongsTo('App\Models\Doctor');
     }
+
+    public function user(){
+      return $this->belongsTo('App\Models\User');
+    }
+
 }

@@ -24,7 +24,7 @@
                 <tbody>
               @foreach ($visits as $visit)
                       <tr data-id="{{$visit->id}}">
-                        <td>{{$visit->patientName}}</td>
+                        <td>{{$visit->user->name}}</td>
                         <td>Dr.{{$visit->doctor->lastName}}</td>
                         <td>{{$visit->dateTime}}</td>
                         <td>

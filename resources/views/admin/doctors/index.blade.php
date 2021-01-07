@@ -10,7 +10,6 @@
           <div class="card-header">
             Doctors
             <a href="{{route('admin.doctors.create')}}" class="btn btn-primary float-right">Add</a>
-            <a href="{{route('admin.home')}}" class="btn btn-primary float-right">Back</a>
           </div>
 
           <div class="card-body">
@@ -42,7 +41,9 @@
               @endforeach
                 </tbody>
               </table>
+
             @endif
+            <a href="{{route('admin.home')}}" class="btn btn-primary">Back</a>
           </div>
         </div>
     </div>

@@ -1,10 +1,10 @@
 <?php
 # @Date:   2020-11-16T14:46:15+00:00
-# @Last modified time: 2021-01-03T17:20:30+00:00
+# @Last modified time: 2021-01-05T13:47:57+00:00
 
 
 
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\Patient\VisitController as PatientVisitController;
@@ -14,11 +14,12 @@ use App\Http\Controllers\Admin\PatientController as AdminPatientController;
 
 use App\Http\Controllers\Patient\HomeController as PatientHomeController;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
+use App\Http\Controllers\Doctor\HomeController as DoctorHomeController;
 
 Route::get('/', [PageController::class, 'welcome'])->name('welcome');
 
-Auth::routes();
-
+Auth::routes(['verify' => true]);
+Route::get('logout', [App\Http\Controllers\Auth\LoginController::class, 'logout']);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/admin/home', [AdminHomeController::class, 'index'])->name('admin.home');

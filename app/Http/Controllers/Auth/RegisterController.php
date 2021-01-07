@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-16T23:42:27+00:00
-# @Last modified time: 2020-11-17T02:12:46+00:00
+# @Last modified time: 2021-01-05T13:44:50+00:00
 
 
 
@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use App\Models\Role;
+use App\Models\Patient;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -58,7 +59,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'min:5', 'confirmed'],
         ]);
     }
 
@@ -70,13 +71,26 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $user = User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+        // $user = User::create([
+        //     'name' => $data['name'],
+        //     'email' => $data['email'],
+        //     'password' => Hash::make($data['password']),
+        // ]);
 
-        $user->roles()->attach(Role::where('name', 'patient')->first());
+        $user = new User();
+        $user->name = $data['name'];
+        $user->email = $data['email'];
+        $user->password = Hash::make($data['password']);
+        $user->save();
+
+        $user->roles()->attach(Role::where('name', 'user')->first());
+
+        $patient = new Patient();
+        $patient->address = '21 Fake Ln, Dublin 4';
+        $patient->phone = '012345678';
+        $patient->user_id = $user->id;
+        $patient->save();
+
 
         return $user;
     }

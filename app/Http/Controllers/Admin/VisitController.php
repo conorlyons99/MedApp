@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-26T12:56:24+00:00
-# @Last modified time: 2021-01-04T12:41:37+00:00
+# @Last modified time: 2021-01-05T19:41:40+00:00
 
 
 
@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Visits;
 use App\Models\Doctor;
+use App\Models\User;
 
 class VisitController extends Controller
 {
@@ -49,9 +50,11 @@ class VisitController extends Controller
     public function create()
     {
         $doctors = Doctor::all();
+        $users = User::all();
 
         return view('admin.visits.create', [
-          'doctors' => $doctors
+          'doctors' => $doctors,
+          'users' => $users
         ]);
     }
 
@@ -64,13 +67,13 @@ class VisitController extends Controller
     public function store(Request $request)
     {
       $request->validate([
-        'patientName' => 'required|max:191',
+        'user_id' => 'required',
         'doctor_id' => 'required',
         'dateTime' => 'required|max:191'
       ]);
 
       $visit = new Visits();
-      $visit->patientName = $request->input('patientName');
+      $visit->user_id = $request->input('user_id');
       $visit->doctor_id = $request->input('doctor_id');
       $visit->dateTime = $request->input('dateTime');
       $visit->save();
@@ -103,10 +106,12 @@ class VisitController extends Controller
     {
       $visit = Visits::findOrFail($id);
       $doctors = Doctor::all();
+      $users = User::all();
 
       return view('admin.visits.edit', [
         'visit'=> $visit,
-        'doctors'=> $doctors
+        'doctors'=> $doctors,
+        'users'=> $users
       ]);
     }
 
@@ -122,12 +127,12 @@ class VisitController extends Controller
       $visit = Visits::findOrFail($id);
 
       $request->validate([
-        'patientName' => 'required|max:191',
+        'user_id' => 'required',
         'doctor_id' => 'required',
         'dateTime' => 'required|max:191'
       ]);
 
-      $visit->patientName = $request->input('patientName');
+      $visit->user_id = $request->input('user_id');
       $visit->doctor_id = $request->input('doctor_id');
       $visit->dateTime = $request->input('dateTime');
       $visit->save();

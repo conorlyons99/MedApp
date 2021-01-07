@@ -15,8 +15,7 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in as a Patient!') }}
-
+                    Welcome Back {{Auth::User()->name}}
                 </div>
                 <div class="card-body">
                   Click <a href="{{route('patient.visits.index')}}">here</a> to view your Appointments

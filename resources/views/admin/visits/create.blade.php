@@ -22,8 +22,12 @@
           <form method="POST" action="{{route('admin.visits.store')}}">
             <input type="hidden" name="_token" value="{{csrf_token()}}">
             <div class="form-group">
-              <label for="patientName">Patient Name</label>
-              <input type="text" class="form-control" id="patientName" name="patientName" value="{{old('patientName')}}"/>
+              <label for="name">Patient Name</label>
+              <select name="user_id" class="form-control">
+                @foreach ($users as $user)
+                  <option value="{{$user->id}}"{{ (old('user_id') == $user->id) ? "selected" : "" }}>{{$user->name}}</option>
+                @endforeach
+              </select>
             </div>
             <div class="form-group">
               <label for="doctorName">Doctor</label>

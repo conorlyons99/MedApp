@@ -1,6 +1,6 @@
 <?php
 # @Date:   2021-01-03T17:09:23+00:00
-# @Last modified time: 2021-01-03T18:36:15+00:00
+# @Last modified time: 2021-01-06T15:45:07+00:00
 
 
 
@@ -52,18 +52,22 @@ class PatientController extends Controller
     public function store(Request $request)
     {
       $request->validate([
-        'firstName' => 'required|max:191',
-        'lastName' => 'required|max:191',
+        'name' => 'required|max:191',
         'email' => 'required|max:191',
-        'phone' => 'required|max:191'
+        'phone' => 'required|max:191',
+        'address' => 'required|max:191'
       ]);
 
+      $user = new User();
+      $user->name = $request->input('name');
+      $user->email = $request->input('email');
+      $user->save();
+      
       $patient = new Patient();
-      $patient->firstName = $request->input('firstName');
-      $patient->lastName = $request->input('lastName');
-      $patient->email = $request->input('email');
       $patient->phone = $request->input('phone');
+      $patient->address = $request->input('address');
       $patient->save();
+      $patient->roles()->attach($role_user);
 
       return redirect()->route('admin.patients.index');
     }
@@ -110,16 +114,16 @@ class PatientController extends Controller
       $patient = Patient::findOrFail($id);
 
       $request->validate([
-        'firstName' => 'required|max:191',
-        'lastName' => 'required|max:191',
+        'name' => 'required|max:191',
         'email' => 'required|max:191',
-        'phone' => 'required|max:191'
+        'phone' => 'required|max:191',
+        'address' => 'required|max:191'
       ]);
 
-      $patient->firstName = $request->input('firstName');
-      $patient->lastName = $request->input('lastName');
+      $patient->name = $request->input('name');
       $patient->email = $request->input('email');
       $patient->phone = $request->input('phone');
+      $patient->address = $request->input('address');
       $patient->save();
 
       return redirect()->route('admin.patients.index');
