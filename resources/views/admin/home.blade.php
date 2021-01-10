@@ -1,7 +1,6 @@
-@extends('layouts.app')
+@extends('inc.adminNav')
 
 @section('content')
-    @include('inc.navbar')
 
 <div class="container-fluid">
     <div class="row justify-content-center">
@@ -16,12 +15,7 @@
                     @endif
 
                     <h4>Welcome back <span>{{ Auth::user()->name }}</span></h4>
-                    <br>
-                    <a href="{{route('admin.visits.index')}}">Visits</a>
-                    <br>
-                    <a href="{{route('admin.doctors.index')}}">Doctors</a>
-                    <br>
-                    <a href="{{route('admin.patients.index')}}">Patients</a>
+
                 </div>
             </div>
         </div>

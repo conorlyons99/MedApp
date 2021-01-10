@@ -1,6 +1,6 @@
 <?php
 # @Date:   2021-01-03T17:09:23+00:00
-# @Last modified time: 2021-01-06T15:45:07+00:00
+# @Last modified time: 2021-01-10T13:46:04+00:00
 
 
 
@@ -26,10 +26,10 @@ class PatientController extends Controller
 
     public function index()
     {
-      $patient = Patient::all();
+      $patients = Patient::all();
 
       return view('admin.patients.index', [
-        'patient' => $patient
+        'patients' => $patients
       ]);
     }
 
@@ -52,22 +52,16 @@ class PatientController extends Controller
     public function store(Request $request)
     {
       $request->validate([
-        'name' => 'required|max:191',
-        'email' => 'required|max:191',
-        'phone' => 'required|max:191',
-        'address' => 'required|max:191'
+        'user_id' => 'required|max:191',
+        'address' => 'required|max:191',
+        'phone' => 'required|max:191'
       ]);
 
-      $user = new User();
-      $user->name = $request->input('name');
-      $user->email = $request->input('email');
-      $user->save();
-      
       $patient = new Patient();
-      $patient->phone = $request->input('phone');
+      $patient->user_id = $request->input('user_id');
       $patient->address = $request->input('address');
+      $patient->phone = $request->input('phone');
       $patient->save();
-      $patient->roles()->attach($role_user);
 
       return redirect()->route('admin.patients.index');
     }
@@ -114,16 +108,12 @@ class PatientController extends Controller
       $patient = Patient::findOrFail($id);
 
       $request->validate([
-        'name' => 'required|max:191',
-        'email' => 'required|max:191',
-        'phone' => 'required|max:191',
-        'address' => 'required|max:191'
+        'address' => 'required|min:8|max:20',
+        'phone' => 'required|min:8|max:20'
       ]);
 
-      $patient->name = $request->input('name');
-      $patient->email = $request->input('email');
-      $patient->phone = $request->input('phone');
       $patient->address = $request->input('address');
+      $patient->phone = $request->input('phone');
       $patient->save();
 
       return redirect()->route('admin.patients.index');
